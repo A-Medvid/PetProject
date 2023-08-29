@@ -23,13 +23,14 @@
             </ul>
         </div>
     </div>
+    <#if isUser == true>
     <div class="container-fluid">
         <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
-
+    </#if>
     <#if isUser == true>
         <a class="nav-item nav-link mx-2" href="/user/profile">${name}</a>
 

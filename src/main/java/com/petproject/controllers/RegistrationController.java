@@ -3,8 +3,6 @@ package com.petproject.controllers;
 import com.petproject.entity.User;
 import com.petproject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -24,19 +21,16 @@ public class RegistrationController {
 
     private final UserService userService;
 
-    private final HttpServletRequest request;
-
     @Autowired
-    public RegistrationController(UserService userService, HttpServletRequest request) {
+    public RegistrationController(UserService userService) {
         this.userService = userService;
-        this.request = request;
     }
 
 
-    @GetMapping("/login")
+/*    @GetMapping("/login")
     public String login() {
         return "login";
-    }
+    }*/
 
     @GetMapping("/registration")
     public String registration() {
@@ -48,7 +42,7 @@ public class RegistrationController {
                             BindingResult bindingResult,
                             Model model, @RequestParam("confirmPassword") String confirmPassword) {
         boolean hasErrors = false;
-        //TODO обработать ошибки валидации длины строки имени и пароля
+
         if (bindingResult.getFieldError("username") != null) {
             model.addAttribute("errorUsernameLength",
                     "Username length must be between 4 and 16 characters");
@@ -85,13 +79,13 @@ public class RegistrationController {
         return "redirect:/login";
     }
 
-    @GetMapping("/logout")
+/*    @GetMapping("/logout")
     public String logout() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null) {
             request.getSession().invalidate();
         }
         return "redirect:/home";
-    }
+    }*/
 
 }

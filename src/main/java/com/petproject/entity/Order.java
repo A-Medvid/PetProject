@@ -24,7 +24,7 @@ public class Order {
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "purchase_books",
-            joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
+            joinColumns = {@JoinColumn(name = "purchase_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "book_id", referencedColumnName = "id")})
     private List<Book> books = new ArrayList<>();
 
