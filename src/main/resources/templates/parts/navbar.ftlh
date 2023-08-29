@@ -31,13 +31,15 @@
     </div>
 
     <#if isUser == true>
-        <a class="nav-item nav-link" href="/user/profile">${name}</a>
+        <a class="nav-item nav-link mx-2" href="/user/profile">${name}</a>
+
+        <a  type="button" class="btn btn-outline-success mx-2" href="/logout">Logout</a>
     <#else>
         <div>
-            <button type="button" class="btn btn-outline-success">LogIn</button>
+            <a type="button" class="btn btn-outline-success mx-2" href="/login">LogIn</a>
         </div>
         <div>
-            <button type="button" class="btn btn-success">SignUp</button>
+            <a type="button" class="btn btn-success mx-2" href="/registration">SignUp</a>
         </div>
     </#if>
 </nav>

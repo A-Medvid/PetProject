@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "purchase")
 @Getter
 @Setter
 public class Order {
@@ -22,7 +23,7 @@ public class Order {
     private User customer;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "order_books",
+    @JoinTable(name = "purchase_books",
             joinColumns = {@JoinColumn(name = "order_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "book_id", referencedColumnName = "id")})
     private List<Book> books = new ArrayList<>();

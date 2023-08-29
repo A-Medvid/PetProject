@@ -26,7 +26,7 @@ public class Book {
     private List<Author> authors;
 
     @ManyToMany(mappedBy = "books", fetch = FetchType.LAZY)
-    private List<Order> orders = new ArrayList<>();
+    private List<Order> purchases = new ArrayList<>();
 
     public Book() {
     }
