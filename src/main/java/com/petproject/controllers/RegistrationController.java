@@ -1,7 +1,7 @@
 package com.petproject.controllers;
 
-import com.petproject.entity.User;
-import com.petproject.service.UserService;
+import com.petproject.entity.Person;
+import com.petproject.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,18 +19,12 @@ import java.util.Optional;
         "errorPassword", "errorPasswordConfirmation", "user"})
 public class RegistrationController {
 
-    private final UserService userService;
+    private final PersonService personService;
 
     @Autowired
-    public RegistrationController(UserService userService) {
-        this.userService = userService;
+    public RegistrationController(PersonService personService) {
+        this.personService = personService;
     }
-
-
-/*    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }*/
 
     @GetMapping("/registration")
     public String registration() {
@@ -38,7 +32,7 @@ public class RegistrationController {
     }
 
     @PostMapping("/registration")
-    public String addUser (@Valid User user,
+    public String addPerson(@Valid Person person,
                             BindingResult bindingResult,
                             Model model, @RequestParam("confirmPassword") String confirmPassword) {
         boolean hasErrors = false;
@@ -48,18 +42,18 @@ public class RegistrationController {
                     "Username length must be between 4 and 16 characters");
             hasErrors = true;
         }
-        final Optional<User> byName = userService.getUserByName(user.getUsername());
+        final Optional<Person> byName = personService.getPersonByName(person.getUsername());
         if (byName.isPresent()) {
-            model.addAttribute("errorUsernameExist", "User with this name already exists");
+            model.addAttribute("errorUsernameExist", "Person with this name already exists");
             hasErrors = true;
         }
         if (bindingResult.getFieldError("email") != null) {
             model.addAttribute("errorEmailValid", "Email is not valid");
             hasErrors = true;
         }
-        final Optional<User> byEmail = userService.getUserByEmail(user.getEmail());
+        final Optional<Person> byEmail = personService.getPersonByEmail(person.getEmail());
         if (byEmail.isPresent()) {
-            model.addAttribute("errorEmailExist", "User with this email already exists");
+            model.addAttribute("errorEmailExist", "Person with this email already exists");
             hasErrors = true;
         }
         if (bindingResult.getFieldError("password") != null) {
@@ -67,25 +61,16 @@ public class RegistrationController {
                     "Password length must be between 3 and 16 characters");
             hasErrors = true;
         }
-        if (!user.getPassword().equals(confirmPassword)) {
+        if (!person.getPassword().equals(confirmPassword)) {
             model.addAttribute("errorPasswordConfirmation", "Passwords do not match");
             hasErrors = true;
         }
         if (hasErrors) {
-            model.addAttribute("user", user);
+            model.addAttribute("user", person);
             return "redirect:/registration";
         }
-        userService.saveNewUser(user);
+        personService.saveNewPerson(person);
         return "redirect:/login";
     }
-
-/*    @GetMapping("/logout")
-    public String logout() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null) {
-            request.getSession().invalidate();
-        }
-        return "redirect:/home";
-    }*/
 
 }

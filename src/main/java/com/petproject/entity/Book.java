@@ -23,13 +23,13 @@ public class Book {
     private String coverImage;
 
     @Enumerated(EnumType.STRING)
-    private BookGenre bookGenre;
+    private Genre genre;
 
     @ManyToMany(mappedBy = "books", fetch = FetchType.LAZY)
     private List<Author> authors;
 
     @ManyToMany(mappedBy = "books", fetch = FetchType.LAZY)
-    private List<Order> purchases = new ArrayList<>();
+    private List<Purchase> purchases = new ArrayList<>();
 
     @OneToMany(mappedBy = "book", cascade = CascadeType.ALL)
     private List<Review> reviews;
@@ -43,12 +43,12 @@ public class Book {
     public Book() {
     }
 
-    public Book(String name, double price, int quantity, String coverImage, BookGenre bookGenre, List<Author> authors) {
+    public Book(String name, double price, int quantity, String coverImage, Genre genre, List<Author> authors) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;
         this.coverImage = coverImage;
-        this.bookGenre = bookGenre;
+        this.genre = genre;
         this.authors = authors;
     }
 

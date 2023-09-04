@@ -14,10 +14,9 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "customer")
 @Getter
 @Setter
-public class User implements UserDetails {
+public class Person implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -33,26 +32,26 @@ public class User implements UserDetails {
     int booksDesired;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "customer_role", joinColumns = @JoinColumn(name = "customer_id"))
+    @CollectionTable(name = "person_role", joinColumns = @JoinColumn(name = "person_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
-    private List<Order> purchases;
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
+    private List<Purchase> purchases;
 
-    @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "person", cascade = CascadeType.ALL)
     private Wishlist wishlist;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private List<Review> reviews;
 
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "person")
     private List<Rating> ratings = new ArrayList<>();
 
-    public User() {
+    public Person() {
     }
 
-    public User(String username, String email, String password, Set<Role> roles) {
+    public Person(String username, String email, String password, Set<Role> roles) {
         this.username = username;
         this.email = email;
         this.password = password;

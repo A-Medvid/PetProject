@@ -10,17 +10,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "purchase")
 @Getter
 @Setter
-public class Order {
+public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private User customer;
+    @JoinColumn(name = "person_id")
+    private Person person;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "purchase_books",
@@ -32,7 +31,7 @@ public class Order {
 
     private LocalDate date;
 
-    public Order() {
+    public Purchase() {
     }
 
     public String getFormattedDate() {

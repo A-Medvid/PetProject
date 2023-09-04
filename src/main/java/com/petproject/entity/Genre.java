@@ -1,6 +1,6 @@
 package com.petproject.entity;
 
-public enum BookGenre {
+public enum Genre {
     ROMANCE("Romance"),
     DETECTIVE("Detective"),
     FANTASY("Fantasy"),
@@ -11,19 +11,20 @@ public enum BookGenre {
 
     private final String displayName;
 
-    BookGenre(String displayName) {
+    Genre(String displayName) {
         this.displayName = displayName;
     }
 
     public String getDisplayName() {
         return displayName;
     }
+
     /**
      * Returns the genre name as a string.
      */
     public static String getNameOfGenre(String genre) {
         try {
-            return BookGenre.valueOf(genre.toUpperCase()).getDisplayName();
+            return Genre.valueOf(genre.toUpperCase()).getDisplayName();
         } catch (IllegalArgumentException e) {
             return genre;
         }

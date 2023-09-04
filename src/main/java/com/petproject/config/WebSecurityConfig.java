@@ -1,6 +1,6 @@
 package com.petproject.config;
 
-import com.petproject.service.UserService;
+import com.petproject.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -18,20 +18,20 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserService userService;
+    private final PersonService personService;
 
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public WebSecurityConfig(UserService userService, PasswordEncoder passwordEncoder) {
-        this.userService = userService;
+    public WebSecurityConfig(PersonService personService, PasswordEncoder passwordEncoder) {
+        this.personService = personService;
         this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/", "/static/**","/home", "/registration")
+                .antMatchers("/", "/static/**", "/home", "/registration")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -55,7 +55,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userService)
+        auth.userDetailsService(personService)
                 .passwordEncoder(passwordEncoder);
     }
 }

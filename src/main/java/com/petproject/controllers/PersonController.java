@@ -1,7 +1,7 @@
 package com.petproject.controllers;
 
-import com.petproject.entity.User;
-import com.petproject.service.UserService;
+import com.petproject.entity.Person;
+import com.petproject.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -13,20 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/user")
 @PreAuthorize("hasAuthority('USER')")
-public class UserController {
+public class PersonController {
 
-    private final UserService userService;
+    private final PersonService personService;
 
     @Autowired
-    public UserController(UserService userService) {
-        this.userService = userService;
+    public PersonController(PersonService personService) {
+        this.personService = personService;
     }
 
 
     @GetMapping("profile")
-    public String getProfile(Model model, @AuthenticationPrincipal User user) {
-        model.addAttribute("username", user.getUsername());
-        model.addAttribute("email", user.getEmail());
+    public String getProfile(Model model, @AuthenticationPrincipal Person person) {
+        model.addAttribute("username", person.getUsername());
+        model.addAttribute("email", person.getEmail());
         return "profile";
     }
 

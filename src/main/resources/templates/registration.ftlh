@@ -1,79 +1,74 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-    <br>
-    <h2>Join us!</h2>
-    <br>
-    <br>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <form id="registrationForm" method="post" action="/registration" class="form-inline">
-                <label for="username">Username:</label>
-                <input id="username" type="text" name="username" class="form-control"
-                       placeholder="Username length must be between 4 and 16 characters"
-                       required minlength="4" maxlength="16">
-                <span id="usernameError" class="error" style="color: red;"></span>
-                <br>
-                <#--<#if errorUsernameLength??>
-                    <div class="alert alert-danger" role="alert">
-                        ${errorUsernameLength}
-                    </div>
-                </#if>-->
-                <#if errorUsernameExist??>
-                    <div class="alert alert-danger" role="alert">
-                        ${errorUsernameExist}
-                    </div>
-                </#if>
-                <label for="email">Email:</label>
-                <input id="email" type="email" name="email" class="form-control"
-                       placeholder="example@mail.com" required>
-                <span id="emailError" class="error" style="color: red;"></span>
-                <br>
-                <#if errorEmailValid??>
-                    <div class="alert alert-danger" role="alert">
-                        ${errorEmailValid}
-                    </div>
-                </#if>
-                <#if errorEmailExist??>
-                    <div class="alert alert-danger" role="alert">
-                        ${errorEmailExist}
-                    </div>
-                </#if>
-                <label for="password">Password:</label>
-                <input id="password" type="password" name="password" class="form-control"
-                       placeholder="Password length must be between 3 and 16 characters"
-                       required minlength="3" maxlength="16">
-                <span id="passwordError" class="error" style="color: red;"></span>
-                <br>
-                <#if errorPassword??>
-                    <div class="alert alert-danger" role="alert">
-                        ${errorPassword}
-                    </div>
-                </#if>
-                <label for="confirmPassword">Confirm Password:</label>
-                <input id="confirmPassword" type="password" name="confirmPassword" class="form-control"
-                       placeholder="Confirm password" required>
-                <span id="confirmPasswordError" class="error" style="color: red;"></span>
-                <br>
-                <#if errorPasswordConfirmation??>
-                    <div class="alert alert-danger" role="alert">
-                        ${errorPasswordConfirmation}
-                    </div>
-                </#if>
-                <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-                <br>
-                <button type="submit" class="btn btn-success"
-                        style="display: block; margin: auto;">Register
-                </button>
-            </form>
-            <br>
-            <br>
-            <p>Already have an account?</p>
-            <button class="btn btn-outline-success custom-btn-width-2" onclick="location.href='/login'">Log in
-            </button>
-            <#--style="display: block; margin: auto;"-->
+        <h2>Join us!</h2>
+        <br>
+        <br>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <form method="post" action="/registration" class="form-inline">
+                    <label for="username">Username:</label>
+                    <input id="username" type="text" name="username" class="form-control"
+                           placeholder="Username length must be between 4 and 16 characters"
+                           required minlength="4" maxlength="16">
+                    <span id="usernameError" class="error" style="color: red;"></span>
+                    <br>
+                    <#if errorUsernameExist??>
+                        <div class="alert alert-danger" role="alert">
+                            ${errorUsernameExist}
+                        </div>
+                    </#if>
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" name="email" class="form-control"
+                           placeholder="example@mail.com" required>
+                    <span id="emailError" class="error" style="color: red;"></span>
+                    <br>
+                    <#if errorEmailValid??>
+                        <div class="alert alert-danger" role="alert">
+                            ${errorEmailValid}
+                        </div>
+                    </#if>
+                    <#if errorEmailExist??>
+                        <div class="alert alert-danger" role="alert">
+                            ${errorEmailExist}
+                        </div>
+                    </#if>
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" name="password" class="form-control"
+                           placeholder="Password length must be between 3 and 16 characters"
+                           required minlength="3" maxlength="16">
+                    <span id="passwordError" class="error" style="color: red;"></span>
+                    <br>
+                    <#if errorPassword??>
+                        <div class="alert alert-danger" role="alert">
+                            ${errorPassword}
+                        </div>
+                    </#if>
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input id="confirmPassword" type="password" name="confirmPassword" class="form-control"
+                           placeholder="Confirm password" required>
+                    <span id="confirmPasswordError" class="error" style="color: red;"></span>
+                    <br>
+                    <#if errorPasswordConfirmation??>
+                        <div class="alert alert-danger" role="alert">
+                            ${errorPasswordConfirmation}
+                        </div>
+                    </#if>
+                    <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+                    <br>
+                    <button type="submit" class="btn btn-success"
+                            style="display: block; margin: auto;">Register
+                    </button>
+                </form>
+            </div>
         </div>
-    </div>
+        <br>
+        <br>
+        <p>Already have an account?</p>
+        <button class="btn btn-outline-success custom-btn-width-2" onclick="location.href='/login'">Log in
+        </button>
+        <#--style="display: block; margin: auto;"-->
+
 
     <script>
         const usernameInput = document.getElementById("username");

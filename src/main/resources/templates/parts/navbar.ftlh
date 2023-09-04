@@ -32,7 +32,7 @@
     </div>
     </#if>
     <#if isUser == true>
-        <a class="nav-item nav-link mx-2" href="/user/profile">${name}</a>
+        <a class="nav-item nav-link mx-2" href="/person/profile">${name}</a>
 
         <a  type="button" class="btn btn-outline-success mx-2" href="/logout">Logout</a>
     <#else>

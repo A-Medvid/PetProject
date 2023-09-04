@@ -13,11 +13,11 @@ import java.util.List;
 public class Wishlist {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "customer_id")
-    private User customer;
+    @JoinColumn(name = "person_id")
+    private Person person;
 
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

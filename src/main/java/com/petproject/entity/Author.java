@@ -32,8 +32,8 @@ public class Author {
         this.lastName = lastName;
     }
 
-    public String name(){
-        String name = firstName +" "+ lastName;
+    public String name() {
+        String name = firstName + " " + lastName;
         return name;
     }
 }
