@@ -1,13 +1,28 @@
 package com.petproject.controllers;
 
+import com.petproject.entity.Book;
+import com.petproject.entity.Person;
+import com.petproject.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
+    private final BookService bookService;
+
+    @Autowired
+    public HomeController(BookService bookService) {
+        this.bookService = bookService;
+    }
 
     @GetMapping("/home")
-    public String getHomePage() {
+    public String getHomePage(Model model, @AuthenticationPrincipal Person user) {
+        model.addAttribute("user", user);
+        Book book = bookService.getRandomBook();
+        model.addAttribute("book", book);
         return "home";
     }
 }

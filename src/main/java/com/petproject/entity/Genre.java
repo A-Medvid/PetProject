@@ -22,7 +22,7 @@ public enum Genre {
     /**
      * Returns the genre name as a string.
      */
-    public static String getNameOfGenre(String genre) {
+    public static String getDisplayNameForGenre(String genre) {
         try {
             return Genre.valueOf(genre.toUpperCase()).getDisplayName();
         } catch (IllegalArgumentException e) {

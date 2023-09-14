@@ -31,7 +31,6 @@ public class PurchaseService {
      */
     public void addBookToPurchases(Person person, Book book) {
         Purchase openPurchase = purchaseRepo.findByPersonAndClosed(person, false);
-
         if (openPurchase == null) {
             openPurchase = new Purchase();
             openPurchase.setPerson(person);
@@ -48,9 +47,7 @@ public class PurchaseService {
      * Used to remove book from the cart.
      */
     public void removeBookFromPurchases(Person person, Book book) {
-
         Purchase openPurchase = purchaseRepo.findByPersonAndClosed(person, false);
-
         openPurchase.getBooks().remove(book);
         person.setBooksReserved(person.getBooksReserved() - 1);
         book.setQuantity(book.getQuantity() + 1);
@@ -70,7 +67,6 @@ public class PurchaseService {
             for (Book book : boughtBooks) {
                 book.setQuantity(book.getQuantity() - 1);
                 bookService.updateBook(book);
-
             }
             person.setBooksReserved(0);
             personService.updatePerson(person);

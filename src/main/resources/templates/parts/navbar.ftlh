@@ -17,9 +17,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
+                <#if isAdmin>
                 <li class="nav-item">
-                    <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <a class="nav-link" href="admin-panel">Admin-Panel</a>
                 </li>
+                </#if>
             </ul>
         </div>
     </div>
