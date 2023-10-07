@@ -3,6 +3,7 @@ package com.petproject.controllers;
 import com.petproject.entity.Book;
 import com.petproject.entity.Person;
 import com.petproject.service.BookService;
+import com.petproject.service.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -14,7 +15,7 @@ public class HomeController {
     private final BookService bookService;
 
     @Autowired
-    public HomeController(BookService bookService) {
+    public HomeController(BookService bookService, PersonService personService) {
         this.bookService = bookService;
     }
 
@@ -25,4 +26,10 @@ public class HomeController {
         model.addAttribute("book", book);
         return "home";
     }
+
+/*    @PostMapping("/home")
+    public String addAdmin(Person person) {
+        personService.setAdminRoleToPerson(person);
+        return "redirect:/login";
+    }*/
 }

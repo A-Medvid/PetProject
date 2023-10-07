@@ -64,4 +64,11 @@ public class Book {
 
         return avgRating;
     }
+
+    /**
+     * Returns placeholder for book cover image.
+     */
+    public String getPlaceHolder() {
+        return "https://demo.publishr.cloud/assets/common/images/edition_placeholder.png?";
+    }
 }

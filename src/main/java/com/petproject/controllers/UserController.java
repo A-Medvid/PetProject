@@ -52,7 +52,7 @@ public class UserController {
         } else if (!newPassword.equals(confirmPassword)) {
             model.addAttribute("errorPasswordConfirmationProfile", "Passwords do not match");
         } else {
-            user.setPassword(newPassword);
+            user.setPassword(passwordEncoder.encode(newPassword));
             personService.updatePerson(user);
             SecurityContextHolder.clearContext();
             return "redirect:/login";

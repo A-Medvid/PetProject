@@ -37,7 +37,7 @@ public class AdminController {
     @PostMapping("/add-book")
     public String addBook(@ModelAttribute Book book) {
         bookService.saveBook(book);
-        return "redirect:/admin-panel";
+        return "redirect:/admin/admin-panel";
     }
 
     /**

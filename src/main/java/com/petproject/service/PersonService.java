@@ -67,6 +67,7 @@ public class PersonService implements UserDetailsService {
 
     public void setAdminRoleToPerson(final Person person) {
         person.setRoles(EnumSet.of(Role.ADMIN, Role.USER));
+        person.setPassword(passwordEncoder.encode(person.getPassword()));
         personRepo.save(person);
     }
 }
