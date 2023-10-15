@@ -77,10 +77,10 @@ public class AdminController {
     }
 
     /**
-     * Used to delete a comment.
+     * Used to delete a review.
      */
-    @PostMapping("/delete-comment")
-    public String deleteComment(@RequestParam Long bookId, @RequestParam Long reviewId) {
+    @PostMapping("/delete-review")
+    public String deleteReview(@RequestParam Long bookId, @RequestParam Long reviewId) {
         Review review = reviewService.getReviewById(reviewId);
         reviewService.deleteReview(review);
         return "redirect:/books/book/" + bookId;

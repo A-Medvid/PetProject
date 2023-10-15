@@ -1,5 +1,6 @@
 <#import "parts/common.ftlh" as c>
 <@c.page>
+    <#include "parts/security.ftlh">
     <div class="q" style="display: flex; flex-direction: column; align-items: center;">
         <h1>${book.name}</h1>
         <br>
@@ -49,26 +50,26 @@
         </div>
         <br>
         <div class="d-flex justify-content-center" style="width: 100%; display: flex; justify-content: center;">
-            <form method="post" action="/new-comment/${book.id}"
+            <form method="post" action="/new-review/${book.id}"
                   style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 70%;">
-                <input type="text" class="form-control me-2 flex-grow-1" placeholder="Write your comment" name="comment"
-                       id="comment" style="height: 68px; margin-right: 10px;">
+                <input type="text" class="form-control me-2 flex-grow-1" placeholder="Write your review" name="review"
+                       id="review" style="height: 68px; margin-right: 10px;">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <button type="submit" class="btn btn-outline-success">Post comment</button>
+                <button type="submit" class="btn btn-outline-success">Add review</button>
             </form>
         </div>
         <br>
         <#if book.getReviews()?has_content>
-            <h2>Comments:</h2>
-            <#list book.getReviews() as comment>
-                <p>${comment.person.username}:</p>
-                <p class="comment">${comment.text}</p>
-                <#if isAdmin??>
-                    <form class="d-flex mb-2" role="form" action="/delete-comment" method="post">
+            <h2>Reviews:</h2>
+            <#list book.getReviews() as review>
+                <p>${review.person.username}:</p>
+                <p class="review">${review.text}</p>
+                <#if isAdmin == true>
+                    <form class="d-flex mb-2" role="form" action="/admin/delete-review" method="post">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        <input type="hidden" name="commentId" value="${comment.id}">
+                        <input type="hidden" name="reviewId" value="${review.id}">
                         <input type="hidden" name="bookId" value="${book.id}">
-                        <button class="btn btn-outline-danger" type="submit">DeleteComment</button>
+                        <button class="btn btn-outline-danger" type="submit">Delete Review</button>
                     </form>
                 </#if>
             </#list>

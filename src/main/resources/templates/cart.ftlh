@@ -2,7 +2,7 @@
 <@c.page>
     <h1>Cart</h1>
     <#if books?has_content>
-        <div class="container align-items-center">
+        <div class="container-center">
             <div class="d-flex align-items-center justify-content-center">
                 <p class="mb-0 mr-3">Total Price: ${totalPrice}&nbsp;UAH&nbsp;</p>
                 <form method="post" action="/cart/checkout">
@@ -19,7 +19,8 @@
                                 <#if book.getCoverImage()??>
                                     <img src="${book.getCoverImage()}" alt="book cover image" style="height: 300px">
                                 <#else>
-                                    <img src="${book.getPlaceHolder()}" alt="book cover placeholder" style="height: 300px">
+                                    <img src="${book.getPlaceHolder()}" alt="book cover placeholder"
+                                         style="height: 300px">
                                 </#if>
                             </div>
                         </div>
@@ -57,6 +58,8 @@
     <#else>
         <p>Empty yet</p>
     </#if>
+    <br>
+    <a href="/cart/purchases" class="btn btn-success custom-btn-width-3">View my Purchases</a>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             let books = Array.from(document.querySelectorAll('.book-item'));

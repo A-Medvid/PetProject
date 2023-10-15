@@ -2,6 +2,8 @@ package com.petproject.controllers;
 
 import com.petproject.entity.Person;
 import com.petproject.service.PersonService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class UserController {
     private final PersonService personService;
     private final PasswordEncoder passwordEncoder;
+    private static final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     public UserController(PersonService personService, PasswordEncoder passwordEncoder) {
@@ -55,10 +58,12 @@ public class UserController {
             user.setPassword(passwordEncoder.encode(newPassword));
             personService.updatePerson(user);
             SecurityContextHolder.clearContext();
+            LOGGER.info("Password successfully changed for user: " + user.getUsername());
             return "redirect:/login";
         }
 
         model.addAttribute("user", user);
+        LOGGER.info(user.getUsername() + "got issues with changing password");
         return "profile";
     }
 

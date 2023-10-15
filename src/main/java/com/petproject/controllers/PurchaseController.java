@@ -5,6 +5,8 @@ import com.petproject.entity.Person;
 import com.petproject.entity.Purchase;
 import com.petproject.service.BookService;
 import com.petproject.service.PurchaseService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -20,6 +22,7 @@ import java.util.List;
 public class PurchaseController {
     private final PurchaseService purchaseService;
     private final BookService bookService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(PurchaseController.class);
 
     @Autowired
     public PurchaseController(PurchaseService purchaseService, BookService bookService) {
@@ -86,7 +89,7 @@ public class PurchaseController {
     public String removeFromPurchases(@AuthenticationPrincipal Person person, @PathVariable Long bookId) {
         Book book = bookService.getBookById(bookId);
         purchaseService.removeBookFromPurchases(person, book);
-        return "redirect:/cart";
+        return "redirect:/cart/";
     }
 
     /**
@@ -94,11 +97,17 @@ public class PurchaseController {
      */
     @PostMapping("/checkout")
     public String checkout(@AuthenticationPrincipal Person person) {
-        Purchase purchase = purchaseService.getOpenPurchaseByPerson(person);
-        purchase.setDate(LocalDate.now());
-        purchaseService.checkout(person);
-        purchaseService.savePurchase(purchase);
-        return "redirect:/";
+        try {
+            Purchase purchase = purchaseService.getOpenPurchaseByPerson(person);
+            purchase.setDate(LocalDate.now());
+            purchaseService.checkout(person);
+            purchaseService.savePurchase(purchase);
+            LOGGER.info("Checkout completed successful for {}", person.getUsername());
+            return "thankYouPage";
+        } catch (Exception e) {
+            LOGGER.error("An error occurred during checkout for user {}: {}", person.getUsername(), e.getMessage());
+            return "redirect:/cart/";
+        }
     }
 
     /**

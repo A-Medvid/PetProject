@@ -2,6 +2,8 @@ package com.petproject.controllers;
 
 import com.petproject.entity.Person;
 import com.petproject.service.PersonService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,7 @@ import java.util.Optional;
 public class RegistrationController {
 
     private final PersonService personService;
+    private static final Logger LOGGER = LoggerFactory.getLogger(RegistrationController.class);
 
     @Autowired
     public RegistrationController(PersonService personService) {
@@ -67,9 +70,11 @@ public class RegistrationController {
         }
         if (hasErrors) {
             model.addAttribute("user", person);
+            LOGGER.info("Registration failed for user: {}", person.getUsername());
             return "redirect:/registration";
         }
         personService.saveNewPerson(person);
+        LOGGER.info("New user registered successfully: {}", person.getUsername());
         return "redirect:/login";
     }
 

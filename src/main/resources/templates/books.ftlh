@@ -1,5 +1,6 @@
 <#import "parts/common.ftlh" as c>
 <@c.page>
+    <#include "parts/security.ftlh">
     <br>
     <div class="d-flex justify-content-between" style="max-width: 700px; margin-left: auto; margin-right: auto;">
         <#if (search??) && (search?has_content)>
@@ -56,20 +57,22 @@
     <#if (search??) && (search?has_content)>
         <h2>Search results for: ${search}</h2>
     <#else>
-        <h2>All Books</h2>
+        <h2 style="text-align: center">All Books</h2>
     </#if>
-    <div class="container align-items-center">
+    <div style="text-align: center">
         <#list books.content as book>
-            <b1><a href="/books/book/${book.id}">${book.name}
-                    <#if isAdmin??> x ${book.quantity} </#if></a></b1>
+            <b><a href="/books/book/${book.id}" >${book.name}
+                    <#if isAdmin == true> x ${book.quantity} </#if></a></b>
             <div class="row mb-3 align-items-left">
                 <div class="col-lg-2 col-sm-12 offset-lg-4">
-                    <div class="image-container">
+                    <div class="image-container" >
+                        <a href="/books/book/${book.id}">
                         <#if book.getCoverImage()??>
-                            <img src="${book.getCoverImage()}" alt="book cover image" style="height: 300px">
+                            <img src="${book.getCoverImage()}" alt="book cover image" style="height: 300px" >
                         <#else>
                             <img src="${book.getPlaceHolder()}" alt="book cover placeholder" style="height: 300px">
                         </#if>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-3 col-sm-12">
@@ -91,8 +94,8 @@
                     <p class="books-p">${book.price}&nbsp;UAH</p>
                 </div>
                 <div class="col-lg-3 col-sm-12">
-                    <#if isAdmin??>
-                        <form class="d-flex mb-2" role="form" action="/change-price/${book.id}" method="post">
+                    <#if isAdmin == true>
+                        <form class="d-flex mb-2" role="form" action="/admin/change-price/${book.id}" method="post">
                             <input class="form-control me-2 flex-grow-1" type="number" id="newPrice"
                                    placeholder="New Price"
                                    aria-label="New Price" name="newPrice" step="0.01" min="0" required>
@@ -100,7 +103,7 @@
                             <input type="hidden" name="bookId" value="${book.id}">
                             <button type="submit" class="btn btn-warning">Change</button>
                         </form>
-                        <form class="d-flex mb-2" role="form" action="/change-quantity/${book.id}" method="post">
+                        <form class="d-flex mb-2" role="form" action="/admin/change-quantity/${book.id}" method="post">
                             <input class="form-control me-2 flex-grow-1" placeholder="New Quantity"
                                    aria-label="New Quantity" type="number" id="newQuantity" name="newQuantity" step="1"
                                    min="1" required>
@@ -108,7 +111,7 @@
                             <input type="hidden" name="bookId" value="${book.id}">
                             <button type="submit" class="btn btn-warning">Change</button>
                         </form>
-                        <form class="d-flex mb-2" role="form" action="/change-image/${book.id}" method="post">
+                        <form class="d-flex mb-2" role="form" action="/admin/change-image/${book.id}" method="post">
                             <input class="form-control me-2 flex-grow-1" placeholder="New Image Link"
                                    aria-label="New Image Link" type="text" id="newImage" name="newImage" required>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

@@ -2,7 +2,7 @@
 <@c.page>
     <h1>Wishlist</h1>
     <#if books?has_content>
-        <div class="container align-items-center">
+        <div class="container-center" >
             <#list books as book>
                 <div class="book-item" data-book-id="${book.id}">
                     <b1><a href="/books/book/${book.id}">${book.name}<span class="book-count"></span></a></b1>

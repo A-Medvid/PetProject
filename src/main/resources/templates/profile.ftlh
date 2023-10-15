@@ -5,7 +5,7 @@
     <h1>${user.username}</h1>
     <p>${user.email}</p>
     <div class="button-container-2">
-        <a href="/cart/purchases" class="btn btn-outline-success custom-btn-width-p">List of Purchases</a>
+        <a href="/cart/purchases" class="btn btn-success custom-btn-width-3">View my Purchases</a>
         <button class="btn btn-outline-warning custom-btn-width-p" id="changePasswordButton">Change Password</button>
     </div>
     <#if errorOldPasswordProfile?? || errorNewPasswordProfile?? || errorPasswordConfirmationProfile?? >

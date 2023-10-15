@@ -27,6 +27,9 @@ public class HomeController {
         return "home";
     }
 
+    /**
+     * Used for creating a person with the ADMIN role. Also check /templates/home.ftlh
+     */
 /*    @PostMapping("/home")
     public String addAdmin(Person person) {
         personService.setAdminRoleToPerson(person);
