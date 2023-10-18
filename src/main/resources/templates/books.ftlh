@@ -44,14 +44,14 @@
                 </ul>
             </form>
         </div>
-        <div class="flex-grow-1">
-            <form class="d-flex" role="search" action="/books" method="get">
-                <input class="form-control me-2 flex-grow-1" type="search" name="search" placeholder="Search"
-                       aria-label="Search">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
+            <div class="flex-grow-1">
+                <form class="d-flex" role="search" action="/books" method="get">
+                    <input class="form-control me-2 flex-grow-1" type="search" name="search" placeholder="Search"
+                           aria-label="Search">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
     </div>
     <br>
     <#if (search??) && (search?has_content)>
@@ -61,17 +61,17 @@
     </#if>
     <div style="text-align: center">
         <#list books.content as book>
-            <b><a href="/books/book/${book.id}" >${book.name}
-                    <#if isAdmin == true> x ${book.quantity} </#if></a></b>
+            <h5 style="text-align: center"><a href="/books/book/${book.id}">${book.name}
+                    <#if isAdmin == true> x ${book.quantity} </#if></a></h5>
             <div class="row mb-3 align-items-left">
                 <div class="col-lg-2 col-sm-12 offset-lg-4">
-                    <div class="image-container" >
+                    <div class="image-container">
                         <a href="/books/book/${book.id}">
-                        <#if book.getCoverImage()??>
-                            <img src="${book.getCoverImage()}" alt="book cover image" style="height: 300px" >
-                        <#else>
-                            <img src="${book.getPlaceHolder()}" alt="book cover placeholder" style="height: 300px">
-                        </#if>
+                            <#if book.getCoverImage()??>
+                                <img src="${book.getCoverImage()}" alt="book cover image" style="height: 300px">
+                            <#else>
+                                <img src="${book.getPlaceHolder()}" alt="book cover placeholder" style="height: 300px">
+                            </#if>
                         </a>
                     </div>
                 </div>

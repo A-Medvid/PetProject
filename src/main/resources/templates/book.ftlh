@@ -21,7 +21,7 @@
             <p>Not rated yet</p>
         <#else>
             <div style="font-size: 18px;">
-                <#assign rating = (book.averageRating()?number)?int />
+                <#assign rating = book.averageRating()?replace(",", ".")?number?int />
                 <#list 1..5 as i>
                     <#if i <= rating>
                         <span class="fa fa-star" style="color: gold;"></span>
@@ -78,8 +78,8 @@
     <h2>More books in genre:&nbsp;${book.genre.getDisplayName()}</h2>
     <div style="display: flex; justify-content: center; flex-wrap: nowrap; overflow-x: auto;">
         <#list books as book>
-            <div style="margin: 10px; width: 250px; display: flex; flex-direction: column; align-items: center;">
-                <b2 style="text-align: center;"><a href="/books/book/${book.id}">${book.name}</a></b2>
+            <div style="margin: 50px; width: 300px; display: flex; flex-direction: column; align-items: center;">
+                <h5 style="text-align: center"><a href="/books/book/${book.id}">${book.name}</a></h5>
                 <div class="book-item" data-book-id="${book.id}" style="display: flex; flex-wrap: nowrap;">
                     <div class="image-container">
                         <#if book.getCoverImage()??>

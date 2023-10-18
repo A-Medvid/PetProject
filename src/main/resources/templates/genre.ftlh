@@ -4,7 +4,7 @@
     <br>
     <div class="container align-items-center">
         <#list booksPage.content as book>
-            <b1><a href="/books/book/${book.id}">${book.name}</a></b1>
+            <h5 style="text-align: center"><a href="/books/book/${book.id}">${book.name}</a></h5>
             <div class="row mb-3 align-items-left">
                 <div class="col-lg-2 col-sm-12 offset-lg-4">
                     <div class="image-container">

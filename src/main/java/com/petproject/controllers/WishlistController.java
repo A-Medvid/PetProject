@@ -84,7 +84,7 @@ public class WishlistController {
     public String removeFromWishlist(@AuthenticationPrincipal Person person, @PathVariable Long bookId) {
         Book book = bookService.getBookById(bookId);
         wishlistService.removeBookFromWishlist(person, book);
-        return "redirect:/wishlist";
+        return "redirect:/wishlist/";
     }
 
     /**
@@ -95,6 +95,6 @@ public class WishlistController {
         Book book = bookService.getBookById(bookId);
         purchaseService.addBookToPurchases(person, book);
         wishlistService.removeBookFromWishlist(person, book);
-        return "redirect:/wishlist";
+        return "redirect:/wishlist/";
     }
 }

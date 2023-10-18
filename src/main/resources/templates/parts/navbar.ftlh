@@ -32,15 +32,15 @@
             </ul>
         </div>
     </div>
-    <#if isUser == true>
+<#--    <#if isUser == true>
     <div class="container-fluid">
         <form class="d-flex" role="search" action="/books" method="get">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
     </div>
-    </#if>
+    </#if>-->
     <#if isUser == true>
         <a class="nav-item nav-link mx-2" href="/user/profile">${name}</a>
 
