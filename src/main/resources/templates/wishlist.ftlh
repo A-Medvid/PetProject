@@ -2,17 +2,19 @@
 <@c.page>
     <h1>Wishlist</h1>
     <#if books?has_content>
-        <div class="container-center" >
+        <div class="container-center">
             <#list books as book>
                 <div class="book-item" data-book-id="${book.id}">
-                    <b1><a href="/books/book/${book.id}">${book.name}<span class="book-count"></span></a></b1>
+                    <h5 style="text-align: center"><a href="/books/book/${book.id}">${book.name}<span
+                                    class="book-count"></span></a></h5>
                     <div class="row mb-3 align-items-left">
                         <div class="col-lg-2 col-sm-12 offset-lg-4">
                             <div class="image-container">
                                 <#if book.getCoverImage()??>
                                     <img src="${book.getCoverImage()}" alt="book cover image" style="height: 300px">
                                 <#else>
-                                    <img src="${book.getPlaceHolder()}" alt="book cover placeholder" style="height: 300px">
+                                    <img src="${book.getPlaceHolder()}" alt="book cover placeholder"
+                                         style="height: 300px">
                                 </#if>
                             </div>
                         </div>

@@ -1,7 +1,7 @@
 package com.petproject.repository;
 
-import com.petproject.entity.Purchase;
 import com.petproject.entity.Person;
+import com.petproject.entity.Purchase;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

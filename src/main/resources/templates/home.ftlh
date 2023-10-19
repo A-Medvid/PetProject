@@ -5,6 +5,14 @@
     <br>
     <section class="user-info" style="text-align: center">
         <#if user??>
+            <div class="flex-grow-1">
+                <form class="d-flex" role="search" action="/books" method="get">
+                    <input class="form-control me-2 flex-grow-1" type="search" name="search" placeholder="Search"
+                           aria-label="Search">
+                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
             <h2>Welcome, ${user.username}, Hope you’ll enjoy this book!</h2>
             <section class="random-book">
                 <div id="random-book">

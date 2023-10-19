@@ -15,36 +15,29 @@
                     <a class="nav-link fs-5" aria-current="page" href="/books">Books</a>
                 </li>
                 <#if isUser == true>
-                <li class="nav-item">
-                    <a class="nav-link fs-5" aria-current="page" href="/cart/">Cart <#--${person.reservedBooks}--></a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" aria-current="page"
+                           href="/cart/">Cart</a>
+                    </li>
                 </#if>
                 <#if isUser == true>
-                <li class="nav-item">
-                    <a class="nav-link fs-5" aria-current="page" href="/wishlist/">Wishlist <#--${person.desiredBooks}--></a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" aria-current="page"
+                           href="/wishlist/">Wishlist</a>
+                    </li>
                 </#if>
                 <#if isAdmin == true>
-                <li class="nav-item">
-                    <a class="nav-link fs-5" href="/admin/admin-panel" style="color: seagreen">Admin-Panel</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-5" href="/admin/admin-panel" style="color: seagreen">Admin-Panel</a>
+                    </li>
                 </#if>
             </ul>
         </div>
     </div>
-<#--    <#if isUser == true>
-    <div class="container-fluid">
-        <form class="d-flex" role="search" action="/books" method="get">
-            <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
-    </div>
-    </#if>-->
     <#if isUser == true>
         <a class="nav-item nav-link mx-2" href="/user/profile">${name}</a>
 
-        <a  type="button" class="btn btn-outline-success mx-2" href="/logout">Logout</a>
+        <a type="button" class="btn btn-outline-success mx-2" href="/logout">Logout</a>
     <#else>
         <div>
             <a type="button" class="btn btn-outline-success mx-2" href="/login">LogIn</a>

@@ -18,6 +18,7 @@ import java.util.EnumSet;
 import java.util.Optional;
 
 import static org.mockito.Mockito.*;
+
 public class PersonServiceTest {
     @Mock
     PersonRepo personRepo;

@@ -46,6 +46,7 @@ public class PurchaseServiceTest {
 
         Assertions.assertEquals(purchase, resultPurchase);
     }
+
     @Test
     void shouldGetClosedPurchaseByPerson() {
         Person person = new Person();

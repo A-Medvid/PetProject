@@ -1,6 +1,5 @@
 <#macro page>
     <!DOCTYPE html>
-    <#--<html xmlns:ftl="http://www.freemarker.org">-->
     <head>
         <title>MyPetProject</title>
         <meta charset="utf-8">
@@ -17,7 +16,7 @@
     <#include "navbar.ftlh">
     <main class="content">
         <div class="container">
-            <div>
+            <div style="min-height: 100%; margin-bottom: 80px; position: relative; z-index: 0;">
                 <#nested>
             </div>
         </div>

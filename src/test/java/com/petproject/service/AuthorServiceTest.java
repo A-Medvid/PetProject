@@ -47,6 +47,7 @@ public class AuthorServiceTest {
         verify(authorRepo, times(1)).findByFirstNameAndLastName(firstName, lastName);
         Assertions.assertEquals(expectedAuthor, resultAuthor);
     }
+
     @Test
     void shouldHandleNullWhenFindingAuthorByName() {
         String firstName = "TestFirstName";

@@ -5,8 +5,8 @@
     <div class="d-flex justify-content-between" style="max-width: 700px; margin-left: auto; margin-right: auto;">
         <#if (search??) && (search?has_content)>
             <form action="/books" method="get" class="me-2">
-                <input type="hidden" id="search" name="search">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <#--<input type="hidden" id="search" name="search">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
                 <button class="btn btn-outline-success" type="submit">Back To All</button>
             </form>
         </#if>
@@ -44,14 +44,14 @@
                 </ul>
             </form>
         </div>
-            <div class="flex-grow-1">
-                <form class="d-flex" role="search" action="/books" method="get">
-                    <input class="form-control me-2 flex-grow-1" type="search" name="search" placeholder="Search"
-                           aria-label="Search">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+        <div class="flex-grow-1">
+            <form class="d-flex" role="search" action="/books" method="get">
+                <input class="form-control me-2 flex-grow-1" type="search" name="search" placeholder="Search"
+                       aria-label="Search">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
     </div>
     <br>
     <#if (search??) && (search?has_content)>
