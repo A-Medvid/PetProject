@@ -38,12 +38,12 @@
                         </div>
                         <div class="col-lg-3 col-sm-12 d-flex">
                             <div class="mt-4">
-                                <form method="post" action="/wishlist/cart/add-book/${book.id}">
+                                <form method="post" action="/wishlist/cart/adding-book/${book.id}">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                     <input type="hidden" name="bookId" value="${book.id}">
                                     <button class="btn btn-success custom-btn-width" type="submit">Add to Cart</button>
                                 </form>
-                                <form method="post" action="/wishlist/remove/${book.id}">
+                                <form method="post" action="/wishlist/removing/${book.id}">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                     <input type="hidden" name="bookId" value="${book.id}">
                                     <button type="submit" class="btn btn-outline-danger custom-btn-width">Remove

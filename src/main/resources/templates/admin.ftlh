@@ -1,7 +1,7 @@
 <#import "parts/common.ftlh" as c>
 <@c.page>
     <h2>Add a new book</h2>
-    <form class="rf" action="/admin/add-book" method="post" id="addBookForm">
+    <form class="rf" action="/admin/new-book" method="post" id="addBookForm">
         <input class="form-control me-2 flex-grow-1" placeholder="Name" type="text" name="name" id="name" required>
         <select class="form-control me-2 flex-grow-1" id="genre" name="genre" required>
             <option class="grey" disabled selected>Select Genre</option>

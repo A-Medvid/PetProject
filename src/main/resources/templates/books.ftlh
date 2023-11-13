@@ -5,8 +5,8 @@
     <div class="d-flex justify-content-between" style="max-width: 700px; margin-left: auto; margin-right: auto;">
         <#if (search??) && (search?has_content)>
             <form action="/books" method="get" class="me-2">
-                <#--<input type="hidden" id="search" name="search">
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>-->
+                <input type="hidden" id="search" name="search">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <button class="btn btn-outline-success" type="submit">Back To All</button>
             </form>
         </#if>
@@ -95,7 +95,7 @@
                 </div>
                 <div class="col-lg-3 col-sm-12">
                     <#if isAdmin == true>
-                        <form class="d-flex mb-2" role="form" action="/admin/change-price/${book.id}" method="post">
+                        <form class="d-flex mb-2" role="form" action="/admin/price/${book.id}" method="post">
                             <input class="form-control me-2 flex-grow-1" type="number" id="newPrice"
                                    placeholder="New Price"
                                    aria-label="New Price" name="newPrice" step="0.01" min="0" required>
@@ -103,7 +103,7 @@
                             <input type="hidden" name="bookId" value="${book.id}">
                             <button type="submit" class="btn btn-warning">Change</button>
                         </form>
-                        <form class="d-flex mb-2" role="form" action="/admin/change-quantity/${book.id}" method="post">
+                        <form class="d-flex mb-2" role="form" action="/admin/quantity/${book.id}" method="post">
                             <input class="form-control me-2 flex-grow-1" placeholder="New Quantity"
                                    aria-label="New Quantity" type="number" id="newQuantity" name="newQuantity" step="1"
                                    min="1" required>
@@ -111,14 +111,14 @@
                             <input type="hidden" name="bookId" value="${book.id}">
                             <button type="submit" class="btn btn-warning">Change</button>
                         </form>
-                        <form class="d-flex mb-2" role="form" action="/admin/change-image/${book.id}" method="post">
+                        <form class="d-flex mb-2" role="form" action="/admin/image/${book.id}" method="post">
                             <input class="form-control me-2 flex-grow-1" placeholder="New Image Link"
                                    aria-label="New Image Link" type="text" id="newImage" name="newImage" required>
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <input type="hidden" name="bookId" value="${book.id}">
                             <button type="submit" class="btn btn-warning">Change</button>
                         </form>
-                        <form action="/delete-book/${book.id}" method="post">
+                        <form action="/admin/book/${book.id}" method="post">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <input type="hidden" name="bookId" value="${book.id}">
                             <button type="submit" class="btn btn-danger w-100">Delete</button>
@@ -127,13 +127,13 @@
                 </div>
                 <div class="mx-auto mt-1">
                     <div class="d-flex justify-content-center">
-                        <form method="post" action="/cart/add-book/${book.id}">
+                        <form method="post" action="/cart/adding-book/${book.id}">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <input type="hidden" name="bookId" value="${book.id}">
                             <button class="btn btn-success" type="submit">Add to Cart</button>
                         </form>
                         <span style="margin: 0 2px;"></span>
-                        <form method="post" action="/wishlist/add-book/${book.id}">
+                        <form method="post" action="/wishlist/adding-book/${book.id}">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <input type="hidden" name="bookId" value="${book.id}">
                             <button class="btn btn-outline-warning" type="submit">Add To Wish List</button>

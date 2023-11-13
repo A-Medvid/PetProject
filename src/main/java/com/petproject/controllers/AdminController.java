@@ -34,7 +34,7 @@ public class AdminController {
     /**
      * Used to add books to the database.
      */
-    @PostMapping("/add-book")
+    @PostMapping("/new-book")
     public String addBook(@ModelAttribute Book book) {
         bookService.saveBook(book);
         return "redirect:/admin/admin-panel";
@@ -43,7 +43,7 @@ public class AdminController {
     /**
      * Used to change the book price.
      */
-    @PostMapping("/change-price/{bookId}")
+    @PostMapping("/price/{bookId}")
     public String changeBookPrice(@PathVariable Long bookId, @RequestParam double newPrice) {
         bookService.updateBookPrice(bookId, newPrice);
         return "redirect:/books";
@@ -52,7 +52,7 @@ public class AdminController {
     /**
      * Used to change the book quantity.
      */
-    @PostMapping("/change-quantity/{bookId}")
+    @PostMapping("/quantity/{bookId}")
     public String changeBookQuantity(@PathVariable Long bookId, @RequestParam int newQuantity) {
         bookService.updateBookQuantity(bookId, newQuantity);
         return "redirect:/books";
@@ -61,7 +61,7 @@ public class AdminController {
     /**
      * Used to change the book picture.
      */
-    @PostMapping("/change-image/{bookId}")
+    @PostMapping("/image/{bookId}")
     public String changeBookImage(@PathVariable Long bookId, @RequestParam String newImage) {
         bookService.updateBookImage(bookId, newImage);
         return "redirect:/books";
@@ -70,7 +70,7 @@ public class AdminController {
     /**
      * Used to set the quantity of books to 0.
      */
-    @PostMapping("/delete-book/{bookId}")
+    @PostMapping("/book/{bookId}")
     public String deleteBook(@PathVariable Long bookId) {
         bookService.updateBookQuantity(bookId, 0);
         return "redirect:/books";
@@ -79,10 +79,10 @@ public class AdminController {
     /**
      * Used to delete a review.
      */
-    @PostMapping("/delete-review")
+    @PostMapping("/review")
     public String deleteReview(@RequestParam Long bookId, @RequestParam Long reviewId) {
         Review review = reviewService.getReviewById(reviewId);
         reviewService.deleteReview(review);
-        return "redirect:/books/book/" + bookId;
+        return "redirect:/books/book/{bookId}";
     }
 }

@@ -35,14 +35,14 @@
                 </div>
                 <div class="mx-auto mt-1">
                     <div class="d-flex justify-content-center">
-                        <form method="post" action="/cart/add-book-genre/${book.id}">
+                        <form method="post" action="/cart/adding-book-genre/${book.id}">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <input type="hidden" name="bookId" value="${book.id}">
                             <input type="hidden" name="selectedGenre" value="${book.genre}">
                             <button class="btn btn-success" type="submit">Add to Cart</button>
                         </form>
                         <span style="margin: 0 2px;"></span>
-                        <form method="post" action="/wishlist/add-book-genre/${book.id}">
+                        <form method="post" action="/wishlist/adding-book-genre/${book.id}">
                             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                             <input type="hidden" name="bookId" value="${book.id}">
                             <input type="hidden" name="selectedGenre" value="${book.genre}">

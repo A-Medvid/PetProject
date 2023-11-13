@@ -48,17 +48,17 @@ public class WishlistController {
     /**
      * Used to add a book to wishlist from a page with a specific book.
      */
-    @PostMapping("/add/{bookId}")
+    @PostMapping("/adding/{bookId}")
     public String addToWishlist(@AuthenticationPrincipal Person person, @PathVariable Long bookId) {
         Book book = bookService.getBookById(bookId);
         wishlistService.addBookToWishlist(person, book);
-        return "redirect:/books/book/" + bookId;
+        return "redirect:/books/book/{bookId}";
     }
 
     /**
      * Used to add a book to wishlist from a page with all books.
      */
-    @PostMapping("/add-book/{bookId}")
+    @PostMapping("/adding-book/{bookId}")
     public String addBookToWishlist(@AuthenticationPrincipal Person person, @PathVariable Long bookId) {
         Book book = bookService.getBookById(bookId);
         wishlistService.addBookToWishlist(person, book);
@@ -68,7 +68,7 @@ public class WishlistController {
     /**
      * Used to add a book to wishlist from a page with books by chosen genre.
      */
-    @PostMapping("/add-book-genre/{bookId}")
+    @PostMapping("/adding-book-genre/{bookId}")
     public String addBookByGenreToWishlist(@AuthenticationPrincipal Person person, @PathVariable Long bookId,
                                            @RequestParam String selectedGenre, RedirectAttributes redirectAttributes) {
         Book book = bookService.getBookById(bookId);
@@ -80,7 +80,7 @@ public class WishlistController {
     /**
      * Used to remove book from wishlist.
      */
-    @PostMapping("/remove/{bookId}")
+    @PostMapping("/removing/{bookId}")
     public String removeFromWishlist(@AuthenticationPrincipal Person person, @PathVariable Long bookId) {
         Book book = bookService.getBookById(bookId);
         wishlistService.removeBookFromWishlist(person, book);
@@ -90,7 +90,7 @@ public class WishlistController {
     /**
      * Used to add a book to the cart from wishlist.
      */
-    @PostMapping("/cart/add-book/{bookId}")
+    @PostMapping("/cart/adding-book/{bookId}")
     public String addToPurchasesFromWishlist(@AuthenticationPrincipal Person person, @PathVariable Long bookId) {
         Book book = bookService.getBookById(bookId);
         purchaseService.addBookToPurchases(person, book);

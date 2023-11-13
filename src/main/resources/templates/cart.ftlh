@@ -45,7 +45,7 @@
                         </div>
                         <div class="col-lg-3 col-sm-12 d-flex">
                             <div class="mt-4">
-                                <form method="post" action="/cart/remove/${book.id}">
+                                <form method="post" action="/cart/removing/${book.id}">
                                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                                     <input type="hidden" name="bookId" value="${book.id}">
                                     <button type="submit" class="btn btn-outline-danger">Remove</button>

@@ -51,7 +51,7 @@ public class BookController {
     /**
      * Used to add a review.
      */
-    @PostMapping("/new-review/{bookId}")
+    @PostMapping("/review/{bookId}")
     public String changeBookQuantity(@PathVariable Long bookId,
                                      @AuthenticationPrincipal Person user,
                                      @RequestParam String review) {
@@ -63,7 +63,7 @@ public class BookController {
     /**
      * Used to rate a book.
      */
-    @PostMapping("/rate-book/{bookId}")
+    @PostMapping("/rating/{bookId}")
     public String rateBook(@PathVariable Long bookId,
                            @AuthenticationPrincipal Person user,
                            @RequestParam int mark) {

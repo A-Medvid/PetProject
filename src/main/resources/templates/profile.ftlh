@@ -18,7 +18,6 @@
             <form class="rf" method="post" action="/user/profile">
                 <h1>Change password:</h1>
                 <br>
-                <#--<label for="old-password">Old password</label>-->
                 <input class="form-control" placeholder="Old password" type="password"
                        name="old-password" id="old-password">
                 <span id="errorOldPasswordProfile" class="error" style="color: red;"></span>
@@ -28,7 +27,6 @@
                     </div>
                 </#if>
                 <br>
-                <#--<label for="new-password">New password</label>-->
                 <input class="form-control" placeholder="New password" type="password"
                        name="new-password" id="new-password">
                 <span id="errorNewPasswordProfile" class="error" style="color: red;"></span>
@@ -38,7 +36,6 @@
                     </div>
                 </#if>
                 <br>
-                <#--<label for="confirm-password">Confirm password</label>-->
                 <input class="form-control" placeholder="Confirm password" type="password"
                        name="confirm-password" id="confirm-password">
                 <span id="errorPasswordConfirmationProfile" class="error" style="color: red;"></span>

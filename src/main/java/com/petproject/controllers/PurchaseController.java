@@ -51,7 +51,7 @@ public class PurchaseController {
     /**
      * Used to add a book to the cart from a page with a specific book.
      */
-    @PostMapping("/add/{bookId}")
+    @PostMapping("/adding/{bookId}")
     public String addToPurchases(@AuthenticationPrincipal Person person, @PathVariable Long bookId) {
         Book book = bookService.getBookById(bookId);
         purchaseService.addBookToPurchases(person, book);
@@ -61,7 +61,7 @@ public class PurchaseController {
     /**
      * Used to add a book to the cart from a page with all books.
      */
-    @PostMapping("/add-book/{bookId}")
+    @PostMapping("/adding-book/{bookId}")
     public String addBookToPurchases(@AuthenticationPrincipal Person person, @PathVariable Long bookId) {
         Book book = bookService.getBookById(bookId);
         purchaseService.addBookToPurchases(person, book);
@@ -71,7 +71,7 @@ public class PurchaseController {
     /**
      * Used to add a book to the cart from a page with books by chosen genre.
      */
-    @PostMapping("/add-book-genre/{bookId}")
+    @PostMapping("/adding-book-genre/{bookId}")
     public String addBookByGenreToPurchases(@AuthenticationPrincipal Person person,
                                             @PathVariable Long bookId,
                                             @RequestParam String selectedGenre,
@@ -85,7 +85,7 @@ public class PurchaseController {
     /**
      * Used to remove book from cart.
      */
-    @PostMapping("/remove/{bookId}")
+    @PostMapping("/removing/{bookId}")
     public String removeFromPurchases(@AuthenticationPrincipal Person person, @PathVariable Long bookId) {
         Book book = bookService.getBookById(bookId);
         purchaseService.removeBookFromPurchases(person, book);

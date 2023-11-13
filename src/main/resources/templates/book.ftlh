@@ -32,7 +32,7 @@
             </div>
         </#if>
         <div class="d-flex justify-content-center" style="width: 100%; display: flex; justify-content: center;">
-            <form method="post" action="/rate-book/${book.id}"
+            <form method="post" action="/rating/${book.id}"
                   style="display: flex; flex-direction: row; align-items: center;">
                 <input class="form-control me-2" placeholder="Rate" type="number" id="mark" name="mark" min="1" max="5"
                        step="1" required style="margin-right: 10px; width: 100px;">
@@ -42,7 +42,7 @@
         </div>
         <br>
         <div class="d-flex justify-content-center">
-            <form method="post" action="/cart/add-book/${book.id}">
+            <form method="post" action="/cart/adding-book/${book.id}">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <input type="hidden" name="bookId" value="${book.id}">
                 <button class="btn btn-success" type="submit">Add to Cart</button>
@@ -50,7 +50,7 @@
         </div>
         <br>
         <div class="d-flex justify-content-center" style="width: 100%; display: flex; justify-content: center;">
-            <form method="post" action="/new-review/${book.id}"
+            <form method="post" action="/review/${book.id}"
                   style="display: flex; flex-direction: row; align-items: center; justify-content: center; width: 70%;">
                 <input type="text" class="form-control me-2 flex-grow-1" placeholder="Write your review" name="review"
                        id="review" style="height: 68px; margin-right: 10px;">
@@ -65,7 +65,7 @@
                 <p>${review.person.username}:</p>
                 <p class="review">${review.text}</p>
                 <#if isAdmin == true>
-                    <form class="d-flex mb-2" role="form" action="/admin/delete-review" method="post">
+                    <form class="d-flex mb-2" role="form" action="/admin/review" method="post">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                         <input type="hidden" name="reviewId" value="${review.id}">
                         <input type="hidden" name="bookId" value="${book.id}">
