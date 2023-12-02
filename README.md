@@ -32,6 +32,7 @@ This is my pet project for an online bookstore where users can browse, purchase,
 
 - Java
 - Spring Boot
+- Spring MVC
 - Spring Data JPA
 - Spring Security
 - Hibernate
